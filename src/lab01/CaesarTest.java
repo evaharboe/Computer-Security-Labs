@@ -20,20 +20,20 @@ public class CaesarTest extends Caesar {
 	}
 
 	
-//	@Test
-//	public void charAddTest() {
-//		assertEquals('e',charAdd('d','b'));
-//		assertEquals('!',charAdd('!','e'));
-//		assertEquals(' ',charAdd(' ','e'));
-//		assertEquals('E',charAdd('D','b'));
-//		assertEquals('e',charAdd('d','B'));
-//		assertEquals('E',charAdd('D','B'));
-//		assertEquals('b',charAdd('x','e'));
-//		assertEquals('B',charAdd('X','e'));
-//		assertEquals('b',charAdd('x','E'));
-//		assertEquals('B',charAdd('X','E'));
-//
-//	}
+	@Test
+	public void charAddTest() {
+		assertEquals('e',charAdd('d','b'));
+		assertEquals('!',charAdd('!','e'));
+		assertEquals(' ',charAdd(' ','e'));
+		assertEquals('E',charAdd('D','b'));
+		assertEquals('e',charAdd('d','B'));
+		assertEquals('E',charAdd('D','B'));
+		assertEquals('b',charAdd('x','e'));
+		assertEquals('B',charAdd('X','e'));
+		assertEquals('b',charAdd('x','E'));
+		assertEquals('B',charAdd('X','E'));
+
+	}
 //	
 //	
 //	@Test
@@ -52,18 +52,25 @@ public class CaesarTest extends Caesar {
 		assertEquals("Yjcy",caesarEncrypt("Text",5));
 		
 	}
-//
-//	@Test
-//	public void vigenereEncryptTest() {
-//		assertEquals("Ugyv",vigenereEncrypt("Text","bc"));	
-//		assertEquals("Ffsw ge y fipk poej fccx",vigenereEncrypt("This is a very real test","MYKEY"));		
-//	}
-//
-//	@Test
-//	public void vigenereDecryptTest() {
-//		assertEquals("Text",vigenereDecrypt("Ugyv","bc"));	
-//		assertEquals("This is a very real test",vigenereDecrypt("Ffsw ge y fipk poej fccx","MYKEY"));		
-//	}
-//
+	
+	@Test
+	public void caesarDecryptTest() {
+		assertEquals("Text",caesarDecrypt("Ufyu",1));
+		assertEquals("Text",caesarDecrypt("Yjcy",5));
+		
+	}
+
+	@Test
+	public void vigenereEncryptTest() {
+		assertEquals("Ugyv",vigenereEncrypt("Text","bc"));	
+		assertEquals("Ffsw ge y fipk poej fccx",vigenereEncrypt("This is a very real test","MYKEY"));		
+	}
+
+	@Test
+	public void vigenereDecryptTest() {
+		assertEquals("Text",vigenereDecrypt("Ugyv","bc"));	
+		assertEquals("This is a very real test",vigenereDecrypt("Ffsw ge y fipk poej fccx","MYKEY"));		
+	}
+
 
 }
