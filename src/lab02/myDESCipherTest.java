@@ -1,6 +1,7 @@
 package lab02;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -35,6 +36,32 @@ public class myDESCipherTest {
 		System.out.println("Decrypted Ciphertext (ascii): "+ new String(plain));
 
 		assertEquals(message, new String(plain));
+	 }
+	
+	@Test
+	public void test3() {
+		System.out.println("============= TEST3 DECRYPTING CIPHER =============");
+		byte[] keybytes;
+		byte[] message;
+		
+		keybytes =  new BigInteger("13579BDF02468ACE",16).toByteArray();
+
+		String cipher = "B4528C2E87081C4AD54A77EE912956AAD24CD1211E00623F";
+		System.out.println("cipher: " + cipher);
+		
+		myDESCipher dc = new myDESCipher(keybytes);
+		
+		byte[] cipherBytes = new BigInteger(cipher, 16).toByteArray();
+		
+		message = dc.decrypt(cipherBytes);
+		
+		byte[] unpaddedMessage = removePadding(message);
+		
+		
+	    System.out.println("Decrypted message (with padding): " + new String(message, StandardCharsets.UTF_8));
+		System.out.println("Decrypted message: " + new String(unpaddedMessage, StandardCharsets.UTF_8));
+
+
 	 }
 	
 	@Test
@@ -81,5 +108,11 @@ public class myDESCipherTest {
 		}
 		return data;
 	}	
-	
+	public byte[] removePadding(byte[] decrypted) {
+	    int padding = decrypted[decrypted.length - 1]; // Last byte indicates padding length
+	    if (padding > 0 && padding <= 8) { // Check for valid padding length (1 to 8 for DES)
+	        return Arrays.copyOf(decrypted, decrypted.length - padding); // Remove padding bytes
+	    }
+	    return decrypted; // Return original if no valid padding found
+	}
 }
